@@ -17,6 +17,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Ventana v = new Ventana();
+		v.setVentanaPrincipal(v);
 		v.setVisible(true);
 	}
 

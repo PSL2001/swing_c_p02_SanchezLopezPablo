@@ -5,6 +5,8 @@
  */
 package swing_c_p02_SanchezLopezPablo;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JDialog;
 
 /**
@@ -12,11 +14,21 @@ import javax.swing.JDialog;
  *
  */
 public class Dialogo extends JDialog {
+	private PanelTitulo titulo;
 	
-	public Dialogo(Ventana v, boolean modal) {
+	public Dialogo(Ventana v, boolean modal, int ancho, int alto) {
 		super(v, modal);
-		this.setSize(v.getSize());
-		this.setLocation(v.getLocation());
+		this.setTitle("Alta Reservas");
+		this.setSize(ancho, alto);
+		this.iniciarComponentes();
+	}
+
+	/**
+	 * 
+	 */
+	private void iniciarComponentes() {
+		titulo = new PanelTitulo();
+		this.add(titulo, BorderLayout.NORTH);
 	}
 
 }

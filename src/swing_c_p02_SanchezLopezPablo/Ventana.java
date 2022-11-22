@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.net.URL;
 
 import javax.swing.*;
@@ -20,11 +21,15 @@ import javax.swing.*;
  *
  */
 public class Ventana extends JFrame implements ActionListener {
-	private Toolkit pantalla;
+	public Toolkit pantalla;
 	private JMenuBar menu;
 	private JMenu archivo, registro, ayuda;
 	private JMenuItem salir, areserva, breserva, acerca;
-	private JButton btnAreserva, btnBreserva; 
+	private JButton btnAreserva, btnBreserva;
+	public Ventana ventana;
+	
+	public int ancho;
+	public int alto;
 	
 	public Ventana() {
 		super("Gestión Hotel Al-Ándalus");
@@ -52,6 +57,15 @@ public class Ventana extends JFrame implements ActionListener {
 		breserva = new JMenuItem("Baja Reservas");
 		acerca = new JMenuItem("Acerca de...");
 		
+		//Añadimos listeners
+		areserva.addActionListener(this);
+		breserva.addActionListener(this);
+		salir.addActionListener(this);
+		acerca.addActionListener(this);
+		
+		//Añadimos nemotécnicos
+		registro.setMnemonic(KeyEvent.VK_R);
+		
 		//Añadimos las opciones a los menus
 		archivo.add(salir);
 		registro.add(areserva);
@@ -71,6 +85,11 @@ public class Ventana extends JFrame implements ActionListener {
 		btnAreserva = new JButton("Alta Reservas"); 
 		btnBreserva = new JButton("Baja Reservas");
 		
+		//Añadimos los listeners correspondientes
+		btnAreserva.addActionListener(this);
+		btnBreserva.addActionListener(this);
+		
+		//Y añadimos a la ventana
 		this.add(btnAreserva);
 		this.add(btnBreserva);
 	}
@@ -95,8 +114,8 @@ public class Ventana extends JFrame implements ActionListener {
 		//Obtenemos la resolucion
 		Dimension tamanio = pantalla.getScreenSize();
 		//Obtenemos el ancho y el alto de la pantalla y los guardamos
-		int ancho = tamanio.width;
-		int alto = tamanio.height;
+		ancho = tamanio.width;
+		alto = tamanio.height;
 		//Para tener el tamaño de la ventana a la mitad, usamos setSize y dividimos el ancho y el alto entre 2
 		this.setSize(ancho/2, alto/2);
 		//Y para centrar lo dividimos entre 4 con setLocation
@@ -106,8 +125,33 @@ public class Ventana extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		Object trigger = e.getSource();
+		if (trigger == btnAreserva || trigger == areserva) {
+			Dialogo vDialogo = new Dialogo(ventana, true, ancho, alto-100);
+			vDialogo.setVisible(true);
+		}
+		
+		if (trigger == btnBreserva || trigger == breserva) {
+			JOptionPane.showMessageDialog(this, "Esta funcionalidad aun no ha sido creada", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+		}
+		
+		if (trigger == salir) {
+			System.exit(0);
+		}
+		
+		if(trigger == acerca) {
+			JOptionPane.showMessageDialog(this, "Aplicacion para poder reservar en nuestros hoteles de forma sencilla y rápida.\nAplicacion creada por: Hoteles IES Al-Ándalus.\nCopyright 2022. Todos los derechos reservados", "Acerca de esta Aplicacion", JOptionPane.INFORMATION_MESSAGE);
+		}
+		
 
+	}
+
+	/**
+	 * @param v2
+	 */
+	public void setVentanaPrincipal(Ventana v2) {
+		ventana = v2;
+		
 	}
 
 }
