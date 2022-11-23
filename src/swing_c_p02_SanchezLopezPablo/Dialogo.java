@@ -15,6 +15,7 @@ import javax.swing.JDialog;
  */
 public class Dialogo extends JDialog {
 	private PanelTitulo titulo;
+	private PanelDatos datos;
 	
 	public Dialogo(Ventana v, boolean modal, int ancho, int alto) {
 		super(v, modal);
@@ -28,7 +29,10 @@ public class Dialogo extends JDialog {
 	 */
 	private void iniciarComponentes() {
 		titulo = new PanelTitulo();
+		datos = new PanelDatos();
+		
 		this.add(titulo, BorderLayout.NORTH);
+		this.add(datos, BorderLayout.WEST);
 	}
 
 }

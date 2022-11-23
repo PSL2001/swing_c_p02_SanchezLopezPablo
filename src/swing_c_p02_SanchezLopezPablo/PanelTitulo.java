@@ -42,7 +42,7 @@ public class PanelTitulo extends JPanel {
 		c3 = new Color(117, 225, 233);
 		
 		nombreHotel.setForeground(c2);
-		nombreHotel.setFont(new Font("Arial", Font.BOLD, 20));
+		nombreHotel.setFont(new Font("Arial", Font.BOLD, 30));
 		
 		this.setBackground(c1);
 		this.setBorder(BorderFactory.createLineBorder(c3, 3));
