@@ -25,7 +25,7 @@ public class PanelDatos extends JPanel {
 	
 	public PanelDatos() {
 		this.iniciarComponentes();
-		this.setLayout(new GridLayout(3, 2, 1, 1));
+		this.setLayout(new GridLayout(1, 1, 1, 1));
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class PanelDatos extends JPanel {
 			ftfFechaSalida = new JFormattedTextField(mfFecha);
 			
 			ftfFechaEntrada.setText(new Fecha("dd/MM/yyyy").devolverFecha());
-			ftfFechaSalida.setText(new Fecha("dd/MM/yyyy").devolverFechaManiana());
+			ftfFechaSalida.setText(new Fecha("dd/MM/yyyy").devolverFechaManiana(ftfFechaEntrada.getText()));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

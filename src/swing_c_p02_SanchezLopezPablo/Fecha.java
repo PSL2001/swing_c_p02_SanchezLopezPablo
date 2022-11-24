@@ -41,12 +41,17 @@ public class Fecha {
 		return dtf.format(dateObj);
 	}
 	
-	public String devolverFechaManiana() {
+	public String devolverFechaManiana(String fecha) {
 		SimpleDateFormat dtf = new SimpleDateFormat(this.formato);
-		Calendar fecha = Calendar.getInstance();
-		fecha.add(Calendar.DATE, 1);
-		Date dateObj = fecha.getTime();
-		return dtf.format(dateObj);
+		Date fechaParse;
+		Date maniana = null;
+		try {
+			fechaParse = dtf.parse(fecha);
+			maniana = new Date(fechaParse.getTime() + TimeUnit.DAYS.toMillis(1));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dtf.format(maniana);
 	}
 	
 	public long obtenerDiferencia(String fecha1, String fecha2) {
