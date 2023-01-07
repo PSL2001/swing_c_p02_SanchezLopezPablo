@@ -5,14 +5,18 @@
  */
 package swing_c_p02_SanchezLopezPablo;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author usuario
+ * The Class Main.
  *
+ * @author usuario
  */
 public class Main {
 
 	/**
-	 * @param args
+	 * The main method.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

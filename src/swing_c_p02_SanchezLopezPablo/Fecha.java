@@ -12,25 +12,50 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author usuario
+ * The Class Fecha.
  *
+ * @author usuario
  */
 public class Fecha {
+	
+	/** The formato. */
 	private String formato;
 	
+	/** The fecha. */
+	private String fecha;
+	
+	/**
+	 * Instantiates a new fecha.
+	 */
 	public Fecha() {
 		
 	}
 	
+	/**
+	 * Instantiates a new fecha.
+	 *
+	 * @param format the format
+	 */
 	public Fecha(String format) {
 		this.formato = format;
 	}
 	
 	/**
+	 * Instantiates a new fecha.
+	 *
+	 * @param format the format
+	 * @param fecha the fecha
+	 */
+	public Fecha(String format, String fecha) {
+		this.formato = format;
+		this.setFecha(fecha);
+	}
+
+	/**
 	 * Devolver fecha.
 	 *
-	 * @param formato the formato
 	 * @return Fecha Formateada con el string enviado
 	 */
 	public String devolverFecha() {
@@ -41,6 +66,12 @@ public class Fecha {
 		return dtf.format(dateObj);
 	}
 	
+	/**
+	 * Devolver fecha maniana.
+	 *
+	 * @param fecha the fecha
+	 * @return the string
+	 */
 	public String devolverFechaManiana(String fecha) {
 		SimpleDateFormat dtf = new SimpleDateFormat(this.formato);
 		Date fechaParse;
@@ -54,6 +85,13 @@ public class Fecha {
 		return dtf.format(maniana);
 	}
 	
+	/**
+	 * Obtener diferencia.
+	 *
+	 * @param fecha1 the fecha 1
+	 * @param fecha2 the fecha 2
+	 * @return the long
+	 */
 	public long obtenerDiferencia(String fecha1, String fecha2) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat(this.formato);
 		long diferencia = 0;
@@ -74,5 +112,31 @@ public class Fecha {
 			e.printStackTrace();
 		}
 		return diferencia;
+	}
+
+	/**
+	 * Gets the fecha.
+	 *
+	 * @return the fecha
+	 */
+	public String getFecha() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(this.formato);
+		Date fechaNueva = null;
+		try {
+			 fechaNueva = dateFormat.parse(fecha);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dateFormat.format(fechaNueva);
+	}
+
+	/**
+	 * Sets the fecha.
+	 *
+	 * @param fecha the fecha to set
+	 */
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
 	}
 }

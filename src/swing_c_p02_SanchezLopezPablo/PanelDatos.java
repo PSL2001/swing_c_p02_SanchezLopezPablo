@@ -7,29 +7,50 @@ package swing_c_p02_SanchezLopezPablo;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.text.ParseException;
+import java.util.Date;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author usuario
+ * The Class PanelDatos.
  *
+ * @author usuario
  */
-public class PanelDatos extends JPanel {
+public class PanelDatos extends JPanel implements FocusListener {
+	
+	/** The ldias. */
 	private JLabel lnombre, lapellidos, ldni, ltelefono, lfechaEntrada, lfechaSalida, ldias;
-	private JTextField tfnombre, tfapellidos, tfNumdias;
-	private JFormattedTextField ftfDni, ftfTelefono, ftfFechaEntrada, ftfFechaSalida;
+	
+	/** The tfapellidos. */
+	public static JTextField tfnombre, tfapellidos;
+	
+	/** The tf numdias. */
+	public static JTextField tfNumdias;
+	
+	/** The ftf fecha salida. */
+	public static JFormattedTextField ftfDni, ftfTelefono, ftfFechaEntrada, ftfFechaSalida;
+	
+	/** The mf fecha. */
 	private MaskFormatter mfDni, mfTelefono, mfFecha;
+	
+	/** The c 3. */
 	private Color c1, c2, c3;
 	
+	/**
+	 * Instantiates a new panel datos.
+	 */
 	public PanelDatos() {
 		this.iniciarComponentes();
 		this.setLayout(new GridLayout(1, 1, 1, 1));
 	}
 
 	/**
-	 * 
+	 * Iniciar componentes.
 	 */
 	private void iniciarComponentes() {
 		lnombre = new JLabel("Nombre: "); 
@@ -48,13 +69,7 @@ public class PanelDatos extends JPanel {
 		c2 = new Color(86, 167, 221);
 		c3 = new Color(117, 225, 233);
 		
-		lnombre.setForeground(c2);
-		lapellidos.setForeground(c2);
-		ldni.setForeground(c2);
-		ltelefono.setForeground(c2);
-		lfechaEntrada.setForeground(c2);
-		lfechaSalida.setForeground(c2);
-		ldias.setForeground(c2);
+		
 		
 		try {
 			//DNI son 8 numeros + 1 Letra en mayuscula 
@@ -69,7 +84,10 @@ public class PanelDatos extends JPanel {
 			ftfFechaEntrada = new JFormattedTextField(mfFecha);
 			ftfFechaSalida = new JFormattedTextField(mfFecha);
 			
+			ftfFechaSalida.addFocusListener(this);
+			
 			ftfFechaEntrada.setText(new Fecha("dd/MM/yyyy").devolverFecha());
+			ftfFechaEntrada.setEnabled(false);
 			ftfFechaSalida.setText(new Fecha("dd/MM/yyyy").devolverFechaManiana(ftfFechaEntrada.getText()));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -78,6 +96,8 @@ public class PanelDatos extends JPanel {
 		
 		long diferencia = new Fecha("dd/MM/yyyy").obtenerDiferencia(ftfFechaEntrada.getText(), ftfFechaSalida.getText());
 		tfNumdias.setText(Long.toString(diferencia));
+		
+		
 		
 		Box cajaV = Box.createVerticalBox();
 		Box cajaH = Box.createHorizontalBox();
@@ -148,6 +168,34 @@ public class PanelDatos extends JPanel {
 		this.setBackground(c1);
 		this.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(c3, 2), "Datos a introducir"));
 		this.add(cajaV);
+		
+	}
+
+	/**
+	 * Focus gained.
+	 *
+	 * @param e the e
+	 */
+	@Override
+	public void focusGained(FocusEvent e) {
+		
+		
+	}
+
+	/**
+	 * Focus lost.
+	 *
+	 * @param e the e
+	 */
+	@Override
+	public void focusLost(FocusEvent e) {
+		Object trigger = e.getSource();
+		if (trigger == ftfFechaSalida) {
+			Fecha fecha = new Fecha("dd/MM/yyyy", ftfFechaEntrada.getText());
+
+			long diferencia = new Fecha("dd/MM/yyyy").obtenerDiferencia(fecha.getFecha(), ftfFechaSalida.getText());
+			tfNumdias.setText(Long.toString(diferencia));
+		}
 		
 	}
 }

@@ -9,9 +9,11 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author usuario
+ * The Class ImageRes.
  *
+ * @author usuario
  */
 public class ImageRes {
 	/** The recurso. */

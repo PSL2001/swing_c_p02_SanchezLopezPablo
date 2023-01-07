@@ -16,23 +16,43 @@ import java.net.URL;
 
 import javax.swing.*;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author usuario
+ * The Class Ventana.
  *
+ * @author usuario
  */
 public class Ventana extends JFrame implements ActionListener {
+	
+	/** The pantalla. */
 	public Toolkit pantalla;
+	
+	/** The menu. */
 	private JMenuBar menu;
+	
+	/** The ayuda. */
 	private JMenu archivo, registro, ayuda;
+	
+	/** The acerca. */
 	private JMenuItem salir, areserva, breserva, acerca;
+	
+	/** The btn breserva. */
 	private JButton btnAreserva, btnBreserva;
+	
+	/** The ventana. */
 	public Ventana ventana;
 	
+	/** The ancho. */
 	public int ancho;
+	
+	/** The alto. */
 	public int alto;
 	
+	/**
+	 * Instantiates a new ventana.
+	 */
 	public Ventana() {
-		super("Gestión Hotel Al-Ándalus");
+		super("Gestión Hotel Al-Andalus");
 		this.centrarPantalla();
 		this.insertarImagen(getClass().getResource("recursos/icono.png"));
 		this.setLayout(new FlowLayout());
@@ -40,7 +60,7 @@ public class Ventana extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * 
+	 * Iniciar componentes.
 	 */
 	private void iniciarComponentes() {
 		//Primero creamos el menu
@@ -95,8 +115,9 @@ public class Ventana extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * @param url 
-	 * 
+	 * Insertar imagen.
+	 *
+	 * @param url the url
 	 */
 	private void insertarImagen(URL url) {
 		//Obtenemos la imagen que pasamos por parametro
@@ -106,7 +127,7 @@ public class Ventana extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * 
+	 * Centrar pantalla.
 	 */
 	private void centrarPantalla() {
 		//Obtenemos la pantalla con ToolKit
@@ -123,6 +144,11 @@ public class Ventana extends JFrame implements ActionListener {
 		
 	}
 
+	/**
+	 * Action performed.
+	 *
+	 * @param e the e
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object trigger = e.getSource();
@@ -140,14 +166,16 @@ public class Ventana extends JFrame implements ActionListener {
 		}
 		
 		if(trigger == acerca) {
-			JOptionPane.showMessageDialog(this, "Aplicacion para poder reservar en nuestros hoteles de forma sencilla y rápida.\nAplicacion creada por: Hoteles IES Al-Ándalus.\nCopyright 2022. Todos los derechos reservados", "Acerca de esta Aplicacion", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Aplicacion para poder reservar en nuestros hoteles de forma sencilla y rápida.\nAplicacion creada por: Hoteles IES Al-Andalus.\nCopyright 2022. Todos los derechos reservados", "Acerca de esta Aplicacion", JOptionPane.INFORMATION_MESSAGE);
 		}
 		
 
 	}
 
 	/**
-	 * @param v2
+	 * Sets the ventana principal.
+	 *
+	 * @param v2 the new ventana principal
 	 */
 	public void setVentanaPrincipal(Ventana v2) {
 		ventana = v2;
