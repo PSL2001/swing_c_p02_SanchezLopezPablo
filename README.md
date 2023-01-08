@@ -24,17 +24,17 @@ Practica de Swing para la asignatura de Diseño de Interfaces sobre una aplicaci
 # Desarrollo del proyecto
 # =======================
 - Se ha desarrollado una aplicacion de registro de un hotel con las siguientes caracteristicas:
-. Se puede dar de alta una reserva
-. Se puede dar de baja una reserva (pero no es posible ya que no se ha implementado la funcionalidad)
+- Se puede dar de alta una reserva
+- Se puede dar de baja una reserva (pero no es posible ya que no se ha implementado la funcionalidad)
 
 Cuando se da de alta una reserva se te pide los siguientes datos:
-. Nombre
-. Apellidos
-. DNI
-. Telefono
-. Fecha de entrada
-. Fecha de salida
-. Datos de la habitacion a reservar
+- Nombre
+- Apellidos
+- DNI
+- Telefono
+- Fecha de entrada
+- Fecha de salida
+- Datos de la habitacion a reservar
 
 # Despliegue (como ejecutar la aplicación desde el ejecutable)
 # ============================================================
