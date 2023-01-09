@@ -61,7 +61,7 @@ java -jar nombreDelArchivo.jar
 - Pablo Sánchez López
 
 ## Licencia
-- Este proyecto está bajo la Licencia MIT - mira el archivo LICENSE.md para más detalles
+Este proyecto está bajo la Licencia MIT - mira el archivo LICENSE.md para más detalles
 
 ## Recursos adicionales:
 - [Documentación de Java](https://docs.oracle.com/javase/8/docs/api/)
